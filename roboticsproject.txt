@@ -1,0 +1,82 @@
+Void detect (int x);
+ Int count=0;
+ Void forward ( );
+ Void scan( );
+ Static int dis1;
+ Int angle=0;
+ Static int val;
+ Static int distance;
+ Task main( )
+ {
+ Forward ( );
+ Wait1Msec(2000);
+ Scan( );
+ Detect(90);
+ Scan( );
+ Detect (90);
+ Scan( );
+ nxtDisplayString(1,”angle=%d”,0);
+ nxtDisplayString(2,”distance=%d”,distance);
+ wait1Msec(5000);
+ forward( );
+ wait1Msec(2000);
+ scan( );
+ detect(-90);
+ scan( );
+ detect(-90);
+Scan( );
+nxtDisplayString(3,”angle=%d”,90);
+nxtDisplayString(4,”distance=%d”,distance);
+wait1Msec(2000);
+scan();
+detect(90);
+scan();
+detect(90);
+scan();
+nxtDisplayString(5,”angle=%d”,90);
+nxtDisplayString(6,”distance=%d”,distance);
+wait1Msec(5000);
+forward();
+wait1Msec(2000);
+scan();
+detect(-90);
+scan();
+detect(-90);
+scan();
+nxtDisplayString(7,”obstacle=%d”,2);
+wait1msec(5000);
+}
+Void detect(int x)
+{ nMotorEncoder(motorC)=0;
+If(x<0)
+{ while(nMotorEncoder(motorC)>x)
+{ motor(motorC)=-5;
+} val=nMotorEncoder(motorC);
+Motor(motorC)=0;
+Wait1Msec(1000);
+} else
+{ while(nMotorEncoder(motorC)<x)
+{ motor(motorC)=5;
+} val=nMotorEncoder(motorC);
+Motor[motorC]=0;
+Wait1Msec(2000);
+}
+}
+Void forward( );
+{nMotorEncoder(motorA)=0;
+Motor[motorA]=25;
+Motor[motorB]=25;
+Wait1Msec(3000);
+Motor[motorA]=0;
+Motor[motorB]=0;
+Dis1=nMotorEncoder(motorB);
+}
+Void scan();
+If (sensorvalue(ultra)<24)
+{
+Count++;
+}
+Angle+=val;
+}
+Distance+=dis1;
+}
